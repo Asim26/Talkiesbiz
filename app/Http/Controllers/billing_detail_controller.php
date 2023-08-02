@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\billing_detail;
+use App\User;
+
 
 class billing_detail_controller extends Controller
 {
@@ -19,6 +21,25 @@ class billing_detail_controller extends Controller
         return view('customers.customer',compact('customer_details'));
     }
 
+    public function orders_seller_reseller()
+    {
+        //display all orders of customer on seller/Reseller account
+        $all_orders=billing_detail::all();
+        return view('orders.orders',compact('all_orders'));
+    }
+    
+    public function dashboard()
+    {
+        //display total no of orders on Admin account
+        $no_of_orders=billing_detail::all()->count();
+        $no_of_sellers=User::where('user_type','Seller')->count();
+        $no_of_resellers=User::where('user_type','Reseller')->count();
+        return view('dashboard',compact('no_of_orders','no_of_sellers','no_of_resellers'));
+        
+    }
+
+    
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -59,7 +80,9 @@ class billing_detail_controller extends Controller
 
         if($created){
 
-            return redirect('/congrats');
+           /* return redirect('/congrats'); */
+              return redirect()->back();
+
         }
     }
 

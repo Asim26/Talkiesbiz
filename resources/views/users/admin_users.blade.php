@@ -1,13 +1,15 @@
-@include('home')
+@extends('layouts.app')
+@section('content')
 <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
 </head>
 <body>
-	<div class="container">
+@can('isAdmin')
 
-  @can('isAdmin')
+	<div class="container col-lg-8 jumbotron">
+
   <h3 style="text-align: center;" >Admin User</h3>
   <table class="table table-hover table-bordered">
   <thead>
@@ -21,46 +23,26 @@
     </tr>
   </thead>
   <tbody>
+
+  @foreach($all_admin_users as $user)
     <tr>
-      <td>Column content</td>
-      <td>
-        <div class="form-group">
-      <label for="exampleSelect1"></label>
-      <select class="form-control" id="exampleSelect1">
-        <option>Admin</option>
-        <option>Editor</option>
-        <option>CSP</option>
-      </select>
-    </div>   
-     </td>
+   
+      <td>{{$user->name}}</td>
+      <td>{{$user->user_type}}</td>
 
-      <td>
-        <div class="form-group">
-      <label for="exampleSelect1"></label>
-      <select class="form-control" id="exampleSelect1">
-        <option>Active</option>
-        <option>Deactive</option>
-      </select>
-    </div>   
-    </td>
+      <td>Active</td>
 
-      <td>Column content</td>
+      <td>Active</td>
 
-      <td><div class="form-group">
-      <label for="exampleSelect1"></label>
-      <select class="form-control" id="exampleSelect1">
-        <option>Completed</option>
-        <option>Dispatch</option>
-        <option>Cancel</option>
-      </select>
-      </div>   
-      <td>
+      <td>{{$user->created_at}}<td>
       <a href="#">Edit</a>
       </td>
       </div>
     </td>
-          
-    </tr>      
+    
+             
+    </tr>   
+    @endforeach   
   </tbody>
 </table>
 
@@ -70,3 +52,4 @@
 
 </body>
 </html>
+@endsection

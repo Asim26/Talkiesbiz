@@ -15,6 +15,9 @@ class CreateBillingDetailTbl extends Migration
     {
         Schema::create('billing_detail', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('product_title');
+            $table->string('quantity');
+            $table->string('price');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('company_name');

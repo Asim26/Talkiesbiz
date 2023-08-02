@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\profile;
+use App\User;
+use Auth;
 
 class profile_controller extends Controller
 {
@@ -12,9 +14,25 @@ class profile_controller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function all_admin_users()
     {
-        //
+        //display all admin users on admin account
+        $all_admin_users=User::where('user_type','Admin')->get();
+        return view('users.admin_users',compact('all_admin_users'));
+    }
+
+    public function all_reseller_users()
+    {
+        //display all reseller users on admin account
+        $all_reseller_users=User::where('user_type','Reseller')->get();;
+        return view('users.reseller_users',compact('all_reseller_users'));
+    }
+
+    public function all_seller_users()
+    {
+        //display all seller users on admin account
+        $all_seller_users=User::where('user_type','Seller')->get();;
+        return view('users.seller_users',compact('all_seller_users'));
     }
 
     /**
@@ -25,6 +43,13 @@ class profile_controller extends Controller
     public function create()
     {
         //
+    }
+
+    public function change_password()
+    {
+      //$user_password= Auth::user()->password;
+      //$decrypt = Crypt::decrypt($user_password);
+      //return view('profile.change_password',compact('decrypt'));
     }
 
     /**

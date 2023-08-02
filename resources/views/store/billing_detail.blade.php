@@ -101,7 +101,7 @@
 
         
       <div class="container col-lg-3 jumbotron " style="float: left;">
-      <h2> Product</h2>
+      <h2> Product:</h2>
       <br>
       <br>
       <h5>Subtotal</h5>

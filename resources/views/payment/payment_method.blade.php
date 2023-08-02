@@ -1,4 +1,5 @@
-@include('home')
+@extends('layouts.app')
+@section('content')
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,13 +11,13 @@
 	<div class="container col-lg-7 jumbotron">
   <h2 style="text-align: center;">Payment Via Credit card / Debit Card</h2>
   <p></p>
-  <form action="{{url('/payment_method/save')}}" method="post" enctype="multipart/form-data"> 
+  <form action="{{url('/payment_method/save/.$product->id')}}" method="post" enctype="multipart/form-data"> 
     <fieldset>                 
      {{csrf_field()}}
   
       <div class="form-group">
       <label for="credit_card_no">Credit Card Number</label>
-      <input type="text" name="credit_card_no" class="form-control" id="credit_card_no">
+      <input type="text" name="credit_card_no" class="form-control" id="credit_card_no" value=".$product->id ">
     </div>
     <div class="form-group">
       <label for="card_type">Card Type</label>
@@ -42,7 +43,7 @@
       <input type="text" name="cvv" class="form-control" id="cvv">
     </div>
 
-    <button type="submit" class="btn btn-primary btn-lg">Save/Edit</button>
+    <button type="submit" class="btn btn-primary btn-lg">Make Payment</button>
     </fieldset>
   </form>
 </div>
@@ -55,3 +56,4 @@
 
 </body>
 </html>
+@endsection

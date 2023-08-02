@@ -1,4 +1,5 @@
-@include('home')
+@extends('layouts.app')
+@section('content')
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,10 +21,10 @@
     </tr>
   </thead>
   <tbody>
+  @foreach($all_reseller_users as $user)
     <tr>
-      <th></th>
-      <td>Column content</td>
-      <td>Column content</td>
+      <td>{{$user->name}}</td>
+      <td></td>
       <td></td>
       <td>
         <div class="form-group">
@@ -34,18 +35,13 @@
       </select>
     </div>   
 </td>
-      <td>
-        <div class="form-group">
-      <label for="exampleSelect1"></label>
-      <select class="form-control" id="exampleSelect1">
-        <option>Block</option>
-        <option>Active</option>
-      </select>
-    </div>   
+      <td>Active</td>
+<td>
 </td>
      
       
-    </tr>      
+    </tr>
+    @endforeach      
   </tbody>
 </table>
 
@@ -56,3 +52,4 @@
 
 </body>
 </html>
+@endsection

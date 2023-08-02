@@ -14,7 +14,7 @@ class account_info_controller extends Controller
      */
     public function index()
     {
-        //
+      //
     }
 
     /**

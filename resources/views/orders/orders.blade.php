@@ -1,4 +1,5 @@
-@include('home')
+@extends('layouts.app')
+@section('content')
 
 <!DOCTYPE html>
 <html>
@@ -94,29 +95,22 @@
     </tr>
   </thead>
   <tbody>
+  @foreach($all_orders as $key => $order)
     <tr>
-      <th></th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
+      <td>{{$key+1}}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>{{$order->first_name}}{{$order->last_name}}</td>
+      <td>{{$order->street_address}}  {{$order->town_city}}  {{$order->state_country}}</td>
      
-      <td>
-        <div class="form-group">
-      <label for="exampleSelect1"></label>
-      <select class="form-control" id="exampleSelect1">
-        <option>Completed</option>
-        <option>Dispatch</option>
-        <option>Cancel</option>
-      </select>
-    </div>
-</td>
+      <td></td>
 
         <td><a href="#">Go</a></td>
 
 
-    </tr>      
+    </tr> 
+    @endforeach     
   </tbody>
 </table>
 
@@ -143,12 +137,13 @@
     </tr>
   </thead>
   <tbody>
+  @foreach($all_orders as $key => $order)
     <tr>
-      <th></th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
+      <td>{{$key+1}}</td>
+      <td></td>
+      <td></td>
+      <td>{{$order->first_name}}{{$order->last_name}}</td>
+      <td>{{$order->street_address}}  {{$order->town_city}}  {{$order->state_country}}</td>
       <td><div class="form-group">
       <label for="exampleSelect1"></label>
       <select class="form-control" id="exampleSelect1">
@@ -163,7 +158,8 @@
         <td><a href="#">Go</a></td>
 
 
-    </tr>      
+    </tr> 
+    @endforeach
   </tbody>
 </table>
 
@@ -174,3 +170,4 @@
 
 </body>
 </html>
+@endsection

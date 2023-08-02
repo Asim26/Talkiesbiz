@@ -1,4 +1,5 @@
-@include('home')
+@extends('layouts.app')
+@section('content')
 <!DOCTYPE html>
 <html>
 <head>
@@ -127,7 +128,7 @@
                             </div>
                         </div>
                    <div class="pull-right">
-                        <button type="button" class="btn btn-primary btn-lg" href={{url('/')}} >Cancel</button>
+                        <button type="button" class="btn btn-primary btn-lg" href={{url('/')}}>>Cancel</button>
                         <button type="submit" class="btn btn-primary btn-lg">Add Product</button>
                     </div>
 
@@ -409,3 +410,4 @@
 
 </body>
 </html>
+@endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\payment_method;
+use App\add_product;
 
 class payment_method_controller extends Controller
 {
@@ -43,7 +44,7 @@ class payment_method_controller extends Controller
         $created=$add->save();
         if($created){
 
-            return redirect()->back();
+            return redirect('billing_detail');
         }
     }
 
@@ -54,7 +55,7 @@ class payment_method_controller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {        
         //
     }
 

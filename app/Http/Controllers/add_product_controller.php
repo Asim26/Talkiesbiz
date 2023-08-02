@@ -143,10 +143,11 @@ class add_product_controller extends Controller
     {
         //show add to cart details
         $product = add_product::find($id);        
-        return view('store.add_to_cart',compact ('product'));
+        return view('store.add_to_cart',compact ('product')); 
+
     }
 
-    
+        
 
     /**
      * Show the form for editing the specified resource.

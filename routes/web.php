@@ -19,21 +19,43 @@ Route::get('/index', function () {
     return view('index');
 });
 
+
+/*
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
+*/
+
+Route::get('/dashboard', 'billing_detail_Controller@dashboard');
+//Route::get('/dashboard', 'HomeController@all_data');
+
+/*
 Route::get('/orders', function () {
     return view('orders.orders');
 });
+*/
+Route::get('orders','billing_detail_controller@orders_seller_reseller');
+
+/*
 Route::get('/admin_user', function () {
     return view('users.admin_users');
 });
+*/
+Route::get('/admin_user','profile_controller@all_admin_users');
+
+/*
 Route::get('/seller_user', function () {
     return view('users.seller_users');
 });
+*/
+Route::get('/seller_user','profile_controller@all_seller_users');
+
+/*
 Route::get('/reseller_user', function () {
     return view('users.reseller_users');
 });
+*/
+Route::get('/reseller_user','profile_controller@all_reseller_users');
 
 
 
@@ -93,9 +115,6 @@ Route::get('/customer','billing_detail_controller@customerdetails');
 
 
 
-Route::get('/contact', function () {
-    return view('contacts.contact');
-});
 Route::get('/product_status', function () {
     return view('products.product_status');
 });
@@ -168,7 +187,7 @@ Route::post('/profile/save','profile_controller@store');
 Route::get('/payment_method', function () {
     return view('payment.payment_method');
 });
-Route::post('/payment_method/save','payment_method_controller@store');
+Route::post('/payment_method/save/{id}','payment_method_controller@store');
 
 
 
@@ -179,6 +198,11 @@ Route::post('/payment_method/save','payment_method_controller@store');
 Route::get('/change_password', function () {
     return view('profile.change_password');
 });
+
+
+//Route::get('/change_password','profile_controller@change_password');
+
+
 Route::get('/payment_history', function () {
     return view('payment.payment_history');
 });
@@ -225,7 +249,8 @@ Route::get('store/item_detail/{id}/add_to_cart','add_product_controller@showaddt
 Route::get('/billing_detail', function () {
     return view('store.billing_detail');
 });
-Route::post('/placeorder','billing_detail_controller@store');
+//Route::post('/placeorder','billing_detail_controller@store');
+Route::post('/placeorder/{id}','billing_detail_controller@store');
 
 
 
@@ -235,6 +260,16 @@ Route::post('/placeorder','billing_detail_controller@store');
 Route::get('congrats', function () {
     return view('store.congrats');
 });
+
+Route::get('contact', function () {
+    return view('contact.contact');
+});
+
+Route::get('modal', function () {
+    return view('modal');
+});
+
+
 
 
 
